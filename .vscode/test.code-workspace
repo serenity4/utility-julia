@@ -1,0 +1,11 @@
+{
+    "folders": [
+        {
+            "path": "/home/belmant/.julia/dev"
+        }
+    ],
+    "settings": {
+        "restructuredtext.languageServer.disabled": true,
+        "editor.formatOnSave": false
+    }
+}

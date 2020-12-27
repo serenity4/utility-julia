@@ -1,0 +1,113 @@
+{
+    "name": "utility-julia",
+    "displayName": "Julia utilities",
+    "description": "Utility tools for Julia",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "utility-julia.start-repl",
+                "title": "Start Julia REPL"
+            },
+            {
+                "command": "utility-julia.close-repls",
+                "title": "Close all REPLs"
+            },
+            {
+                "command": "utility-julia.eval-selection",
+                "title": "Evaluate selection in the REPL"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "utility-julia.start-repl",
+                "key": "alt+j alt+o"
+            },
+            {
+                "command": "utility-julia.close-repls",
+                "key": "alt+j alt+k"
+            },
+            {
+                "command": "utility-julia.eval-selection",
+                "key": "ctrl+enter"
+            }
+        ],
+        "languages": [
+            {
+                "id": "Julia",
+                "extensions": [
+                    ".jl"
+                ],
+                "configuration": "./syntaxes/julia-language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "Julia",
+                "scopeName": "source.julia",
+                "path": "./syntaxes/julia-grammar.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "Julia Utility",
+                "id": "julia-utility-theme",
+                "path": "./themes/julia-syntax-highlighting.json"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.52.0",
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.4",
+        "@types/node": "^12.11.7",
+        "eslint": "^7.15.0",
+        "@typescript-eslint/eslint-plugin": "^4.9.0",
+        "@typescript-eslint/parser": "^4.9.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.1.3",
+        "typescript": "^4.1.2",
+        "vscode-test": "^1.4.1"
+    },
+    "configuration": {
+        "type": "object",
+        "title": "Julia Utilities",
+        "properties": {
+            "julia.executable": {
+                "type": "string",
+                "default": "",
+                "description": "Julia executable.",
+                "scope": "machine-overridable"
+            },
+            "julia.serverExecutable": {
+                "type": "string",
+                "default": "",
+                "description": "Julia executable for the Language Server.",
+                "scope": "machine-overridable"
+            }
+        }
+    },
+    "dependencies": {
+        "net": "^1.0.2",
+        "process": "^0.11.10",
+        "vscode-languageclient": "^7.0.0"
+    }
+}

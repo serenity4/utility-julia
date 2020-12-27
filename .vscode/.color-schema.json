@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "VSCode Color Picker for JSON",
+    "type": "object",
+    "definitions": {
+        "color": {
+            "default": "#",
+            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[A-Fa-f0-9]{8})$",
+            "format": "color",
+            "example": "#aa33cc",
+            "type": "string"
+        }
+    },
+    "properties": {
+        "tokenColors": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "settings": {
+                        "type": "object",
+                        "properties": {
+                            "foreground": {
+                                "$ref": "#/definitions/color"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "colors": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "$ref": "#/definitions/color"
+                }
+            }
+        }
+    }
+}
